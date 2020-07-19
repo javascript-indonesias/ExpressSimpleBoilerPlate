@@ -1,0 +1,42 @@
+{
+  "name": "express-simple-boilerplate",
+  "version": "1.0.0",
+  "description": "Simple boilerplate for Express JS Node JS project.",
+  "main": "index.js",
+  "engines": {
+    "node": "12.18.2"
+  },
+  "scripts": {
+    "start": "node ./dist/index.js",
+    "build": "babel --delete-dir-on-start --out-dir dist --copy-files --ignore \"**/__tests__/**,**/__mocks__/**\" --no-copy-ignored src",
+    "debug": "nodemon ./dev.js"
+  },
+  "author": "GulajavaMinistudio",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/register": "^7.10.5",
+    "@babel/runtime": "^7.10.5",
+    "express": "^4.17.1",
+    "express-async-errors": "^3.1.1",
+    "loglevel": "^1.6.8",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.4"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.10.5",
+    "@babel/plugin-transform-runtime": "^7.10.5",
+    "@babel/preset-env": "^7.10.4",
+    "eslint": "^7.5.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-config-node": "^4.1.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.20.3",
+    "eslint-plugin-react-hooks": "^4.0.8",
+    "prettier": "^2.0.5"
+  }
+}

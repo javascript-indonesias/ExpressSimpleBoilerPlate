@@ -1,0 +1,55 @@
+{
+    "telemetry.enableTelemetry": false,
+    "telemetry.enableCrashReporter": false,
+    "files.exclude": {
+        "**/.git": true,
+        "**/.DS_Store": true,
+        "**/.vscode": false,
+        "**/__pycache__": true,
+        "**/.pytest_cache": true,
+        "**/node_modules": false,
+        "node_modules": true,
+        "venv": true,
+        "*.sublime-*": true,
+        "env*": true,
+        "dist": false,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true
+    },
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/bower_components": true,
+        "**/env": true,
+        "**/venv": true,
+        "**/dist": true,
+        "**/scss": true,
+        "**/.idea": true,
+    },
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+        "**/node_modules/**": true,
+        "**/env/**": true,
+        "**/venv/**": true,
+        "env-*": true,
+        "**/dist/**": true,
+        "**/scss/**": true,
+        "**/.idea/": true,
+    },
+    "workbench.colorCustomizations": {
+        "editorCursor.foreground": "#ff4057",
+        "terminalCursor.foreground": "#ff4057"
+    },
+    "editor.formatOnSave": true,
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+    "typescript.disableAutomaticTypeAcquisition": false
+}
