@@ -69,6 +69,7 @@ web_modules/
 .yarn-integrity
 
 # dotenv environment variables file
+# Jangan lupa untuk aktifkan ini ketika akan dipush ke Git ya.
 .env
 .env.test
 
@@ -83,6 +84,7 @@ out
 # Nuxt.js build / generate output
 .nuxt
 dist
+bundle
 
 # Gatsby files
 .cache/

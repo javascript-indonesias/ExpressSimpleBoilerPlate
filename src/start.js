@@ -1,4 +1,5 @@
 import express from 'express';
+import morgan from 'morgan';
 // this is all it takes to enable async/await for express middleware
 import 'express-async-errors';
 import logger from 'loglevel';
@@ -62,6 +63,8 @@ function startServer({ port = process.env.PORT } = {}) {
     app.use('/api', getRoutes());
     // add the generic error handler just in case errors are missed by middleware
     app.use(errorMiddleware);
+    // Debugging purpose with morgan
+    app.use(morgan('dev'));
     // I prefer dealing with promises. It makes testing easier, among other things.
     // So this block of code allows me to start the express app and resolve the
     // promise with the express server

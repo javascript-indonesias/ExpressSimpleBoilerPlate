@@ -1,0 +1,7 @@
+# Environment yang dibutuhkan untuk server production
+# Jangan lupa ganti nilainya di server VPS untuk produksi
+API_URL=""
+API_KEY=""
+PORT=3200
+VERSIONAPP="v100"
+MONGODBURI=""

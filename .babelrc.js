@@ -1,6 +1,5 @@
 const pkg = require('./package.json');
 module.exports = {
-    plugins: ['@babel/plugin-transform-runtime'],
     presets: [
         [
             '@babel/preset-env',
@@ -10,5 +9,14 @@ module.exports = {
                 },
             },
         ],
+    ],
+    plugins: [
+        [
+            '@babel/plugin-transform-runtime',
+            {
+                regenerator: true,
+            },
+        ],
+        '@babel/plugin-proposal-object-rest-spread',
     ],
 };

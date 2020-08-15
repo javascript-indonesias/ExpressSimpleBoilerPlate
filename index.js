@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 const nodemon = require('nodemon');
 const dist = require('./dist');
 

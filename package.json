@@ -4,30 +4,39 @@
   "description": "Simple boilerplate for Express JS Node JS project.",
   "main": "index.js",
   "engines": {
-    "node": "12.18.2"
+    "node": "12.18.3"
   },
   "scripts": {
-    "start": "node ./dist/index.js",
-    "build": "babel --delete-dir-on-start --out-dir dist --copy-files --ignore \"**/__tests__/**,**/__mocks__/**\" --no-copy-ignored src",
-    "debug": "nodemon ./dev.js"
+    "build-babel": "babel --delete-dir-on-start --out-dir dist --copy-files --ignore \"**/__tests__/**,**/__mocks__/**\" --no-copy-ignored src",
+    "start-babel": "node ./dist/index.js",
+    "debug-babel": "nodemon ./dev.js",
+    "removedist": "rm -rf ./dist",
+    "removebundle": "rm -rf ./bundle",
+    "build-prod": "webpack --config webpack.prod.js",
+    "debug-prod": "cd ./bundle && npm install && nodemon server.v100.bundle.js"
   },
   "author": "GulajavaMinistudio",
   "license": "MIT",
   "dependencies": {
     "@babel/register": "^7.10.5",
-    "@babel/runtime": "^7.10.5",
+    "@babel/runtime": "^7.11.2",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-async-errors": "^3.1.1",
     "loglevel": "^1.6.8",
+    "mongoose": "^5.10.0",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.4"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.5",
-    "@babel/core": "^7.10.5",
-    "@babel/plugin-transform-runtime": "^7.10.5",
-    "@babel/preset-env": "^7.10.4",
-    "eslint": "^7.5.0",
+    "@babel/core": "^7.11.1",
+    "@babel/plugin-proposal-object-rest-spread": "^7.11.0",
+    "@babel/plugin-transform-runtime": "^7.11.0",
+    "@babel/preset-env": "^7.11.0",
+    "babel-loader": "^8.1.0",
+    "copy-webpack-plugin": "^6.0.3",
+    "eslint": "^7.7.0",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-config-node": "^4.1.0",
     "eslint-config-prettier": "^6.11.0",
@@ -35,8 +44,18 @@
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.1.4",
-    "eslint-plugin-react": "^7.20.3",
+    "eslint-plugin-react": "^7.20.6",
     "eslint-plugin-react-hooks": "^4.0.8",
-    "prettier": "^2.0.5"
+    "file-loader": "^6.0.0",
+    "install": "^0.13.0",
+    "npm": "^6.14.7",
+    "prettier": "^2.0.5",
+    "terser-webpack-plugin": "^4.1.0",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0",
+    "webpack-merge": "^5.1.1",
+    "webpack-node-externals": "^2.5.1"
   }
 }
