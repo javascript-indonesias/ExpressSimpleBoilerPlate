@@ -31,7 +31,7 @@ Dalam pembuatan mode production, terdapat dua pilihan. Pilihan pertama yaitu mel
 
 - Untuk menguji hasil build mode Webpack ini, jalankan perintah `npm run debug-prod`.
 
-- JIka ingin digunakan untuk deploy ke server, gunakan hasil build di folder `/bundle` ini. Jangan lupa untuk konfigurasi `.env` dan instalasi package yang dibutuhkan di `package.json` . Setelah konfigurasi dua hal tersebut, jalankan file `server.[versi build].bundle.js dengan PM2, Nodemon, atau Forever JS.
+- Jika ingin digunakan untuk deploy ke server, gunakan hasil build di folder `/bundle` ini. Jangan lupa untuk konfigurasi `.env` dan instalasi package yang dibutuhkan di `package.json` . Setelah konfigurasi dua hal tersebut, jalankan file `server.bundle.js` dengan PM2, Nodemon, atau Forever JS.
 
 ## Persyaratan Opsional Lainnya
 

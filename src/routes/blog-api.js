@@ -8,17 +8,18 @@ const jsonParser = bodyParser.json();
 const urlencodedParser = bodyParser.urlencoded({ extended: true });
 
 function getListBlogs(req, res) {
-    //
+    res.send({ status: 'ok' });
 }
 
 function createNewBlogs(req, res) {
-    //
+    res.send({ status: 'ok' });
 }
 
 function getBlogRoutes() {
     const router = express.Router();
     router.get('/blog-list', jsonParser, getListBlogs);
     router.post('/create-blog', urlencodedParser, createNewBlogs);
+    return router;
 }
 
 export default getBlogRoutes;

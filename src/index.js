@@ -33,10 +33,13 @@ connectMongoDb()
     .then((isConnect) => {
         if (isConnect) {
             logger.info('MongoDb connected');
-            // Aktifkan jika ingin mode produksi
-            startServerCluster();
-            // Aktifkan jika mode debug
-            // startServerDebug();
+            if (config.mode === 'production') {
+                // Aktifkan jika ingin mode production
+                startServerCluster();
+            } else {
+                // Aktifkan jika mode development
+                startServerDebug();
+            }
         } else {
             logger.info('Mongodb not connected');
         }
@@ -48,4 +51,4 @@ connectMongoDb()
 
 // Untuk menguji API akses dengan Postman atau Insomnia dengan
 // Contoh URL API berikut
-// http://localhost:3200/api/math/add?a=1&c=3
+// http://localhost:3200/api/v1/math/add?a=1&c=3

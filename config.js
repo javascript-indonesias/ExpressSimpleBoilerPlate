@@ -8,4 +8,5 @@ module.exports = {
     port: process.env.PORT,
     version: process.env.VERSIONAPP,
     mongouri: process.env.MONGODBURI,
+    mode: process.env.MODEDEV,
 };

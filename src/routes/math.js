@@ -1,4 +1,9 @@
 import express from 'express';
+import { isMainThread } from 'worker_threads';
+import {
+    runWorkerPrimeService,
+    runBubbleSortService,
+} from '../workers/index-service';
 
 // all the controller and utility functions here:
 function helloTest(_req, res) {
@@ -15,6 +20,42 @@ async function subtract(req, res) {
     res.send(difference.toString());
 }
 
+async function calcPrimeNumber(req, res) {
+    const startNumber = Number(req.query.startrange);
+    const rangeNumber = Number(req.query.ranges);
+    const workData = { start: startNumber, range: rangeNumber };
+
+    if (isMainThread) {
+        try {
+            const result = await runWorkerPrimeService(workData);
+            res.send(result);
+        } catch (err) {
+            res.send({
+                error: 'Error kalkulasi bilangan prima',
+                message: err.message,
+            });
+        }
+    }
+}
+
+async function calcBubbleSorted(req, res) {
+    const lengthNumber = Number(req.query.lengtnum);
+    const maxNumber = Number(req.query.maxnum);
+    const workData = { lengthData: lengthNumber, maxData: maxNumber };
+
+    if (isMainThread) {
+        try {
+            const result = await runBubbleSortService(workData);
+            res.send(result);
+        } catch (err) {
+            res.send({
+                error: 'Error generate random number',
+                message: err.message,
+            });
+        }
+    }
+}
+
 // A function to get the routes.
 // That way all the route definitions are in one place which I like.
 // This is the only thing that's exported
@@ -23,7 +64,9 @@ function getMathRoutes() {
     router.get('/add', add);
     router.get('/subtract', subtract);
     router.get('/hello', helloTest);
+    router.get('/calc-prime', calcPrimeNumber);
+    router.get('/bubbles', calcBubbleSorted);
     return router;
 }
 
-export { getMathRoutes };
+export default getMathRoutes;

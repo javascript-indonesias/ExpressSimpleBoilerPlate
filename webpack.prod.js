@@ -35,7 +35,6 @@ module.exports = {
                 sourceMap: true,
                 extractComments: false,
                 terserOptions: {
-                    ecma: 5,
                     mangle: true,
                     output: {
                         comments: false,
@@ -45,8 +44,8 @@ module.exports = {
         ],
     },
     output: {
-        filename: `server.${config.version}.bundle.js`,
-        path: path.resolve(__dirname, 'bundle'),
+        filename: 'server.bundle.js',
+        path: path.resolve(__dirname, 'bundle', `server-${config.version}`),
     },
     module: {
         rules: [
@@ -77,6 +76,10 @@ module.exports = {
                     },
                 },
             },
+            {
+                test: /\.worker\.js$/,
+                use: { loader: 'worker-loader' },
+            },
         ],
     },
     plugins: [
@@ -86,6 +89,8 @@ module.exports = {
                 { from: 'package-lock.json', to: './' },
                 { from: 'DEPLOY-README.txt', to: './' },
                 { from: '.env', to: './' },
+                { from: 'src/workers/buble-sorts.worker.js', to: './' },
+                { from: 'src/workers/calc-primes.worker.js', to: './' },
             ],
         }),
     ],

@@ -61,14 +61,15 @@ function setupCloseOnExit(server) {
 
 function startServer({ port = process.env.PORT } = {}) {
     const app = express();
-    // Add helmet js
+    // Add helmet js for basic hardening security
     app.use(helmet());
     // Debugging purpose with morgan
     app.use(morgan('dev'));
     // Middleware for http body
     app.use(express.urlencoded({ extended: true }));
     // I mount my entire app to the /api route (or you could just do "/" if you want)
-    app.use('/api', rateLimiter, speedLimiter, getRoutes());
+    // Use rate limiter and speed limiter for prevent brute force and spamming attacks
+    app.use('/api/v1', rateLimiter, speedLimiter, getRoutes());
     // add the generic error handler just in case errors are missed by middleware
     app.use(errorMiddleware);
     // I prefer dealing with promises. It makes testing easier, among other things.

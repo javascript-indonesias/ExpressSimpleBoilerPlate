@@ -1,6 +1,6 @@
 import express from 'express';
 // any other routes imports would go here
-import { getMathRoutes } from './math';
+import getMathRoutes from './math';
 import getBlogRoutes from './blog-api';
 
 function getRoutes() {
