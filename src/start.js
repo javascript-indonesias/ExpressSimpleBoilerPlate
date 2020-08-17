@@ -1,10 +1,12 @@
 import express from 'express';
 import morgan from 'morgan';
+import helmet from 'helmet';
 // this is all it takes to enable async/await for express middleware
 import 'express-async-errors';
 import logger from 'loglevel';
 // all the routes for my app are retrieved from the src/routes/index.js module
 import { getRoutes } from './routes';
+import { rateLimiter, speedLimiter } from './utils/options-value';
 
 // here's our generic error handler for situations where we didn't handle
 // errors properly
@@ -59,12 +61,16 @@ function setupCloseOnExit(server) {
 
 function startServer({ port = process.env.PORT } = {}) {
     const app = express();
-    // I mount my entire app to the /api route (or you could just do "/" if you want)
-    app.use('/api', getRoutes());
-    // add the generic error handler just in case errors are missed by middleware
-    app.use(errorMiddleware);
+    // Add helmet js
+    app.use(helmet());
     // Debugging purpose with morgan
     app.use(morgan('dev'));
+    // Middleware for http body
+    app.use(express.urlencoded({ extended: true }));
+    // I mount my entire app to the /api route (or you could just do "/" if you want)
+    app.use('/api', rateLimiter, speedLimiter, getRoutes());
+    // add the generic error handler just in case errors are missed by middleware
+    app.use(errorMiddleware);
     // I prefer dealing with promises. It makes testing easier, among other things.
     // So this block of code allows me to start the express app and resolve the
     // promise with the express server

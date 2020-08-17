@@ -4,7 +4,7 @@ import os from 'os';
 import startServer from './start';
 import connectMongoDb from './repository/dbconnect';
 
-import { port } from '../config';
+import config from '../config';
 
 const numCPUS = os.cpus().length;
 logger.setLevel('info');
@@ -16,17 +16,27 @@ function startServerCluster() {
             cluster.fork();
         }
     } else {
-        startServer({ port })
+        startServer({ port: config.port })
             .then()
             .catch((err) => logger.error(err));
     }
+}
+
+function startServerDebug() {
+    // Aktifkan jika mode debug
+    startServer({ port: 3200 })
+        .then()
+        .catch((err) => logger.error(err));
 }
 
 connectMongoDb()
     .then((isConnect) => {
         if (isConnect) {
             logger.info('MongoDb connected');
+            // Aktifkan jika ingin mode produksi
             startServerCluster();
+            // Aktifkan jika mode debug
+            // startServerDebug();
         } else {
             logger.info('Mongodb not connected');
         }
@@ -36,8 +46,6 @@ connectMongoDb()
         logger.info('Mongodb not connected');
     });
 
-// Aktifkan jika mode debug
-// startServer({ port: 3200 });
-
-// Jalankan gunakan untuk menggunakan API, misalnya
+// Untuk menguji API akses dengan Postman atau Insomnia dengan
+// Contoh URL API berikut
 // http://localhost:3200/api/math/add?a=1&c=3

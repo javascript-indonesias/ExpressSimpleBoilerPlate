@@ -1,6 +1,6 @@
 # Node JS ES2015 Express Boilerplate
 
-Kerangka aplikasi untuk aplikasi backend berbasis Node JS dengan framework Express JS, Babel, dan ES2015. Dibuat berdasarkan referensi [Kent C. Dodds Blogs](https://kentcdodds.com/blog/how-i-structure-express-apps) yang berjudul **_How I structure Express apps_**. Namun dengan tambahan Linter ESLint dan Prettier Formatter, kemudian dukungan untuk melakukan bundle aplikasi backend menjadi satu bundle file dengan bantuan Webpack.
+Kerangka aplikasi untuk aplikasi backend REST API berbasis Node JS dengan framework Express JS, Babel, dan ES2015. Dibuat berdasarkan referensi [Kent C. Dodds Blogs](https://kentcdodds.com/blog/how-i-structure-express-apps) yang berjudul **_How I structure Express apps_**. Namun dengan tambahan Linter ESLint dan Prettier Formatter, kemudian dukungan untuk melakukan bundle aplikasi backend menjadi satu bundle file dengan bantuan Webpack.
 
 Github sumber dari Kent C Dodds adalah disini [https://github.com/kentcdodds/express-app-example](https://github.com/kentcdodds/express-app-example).
 

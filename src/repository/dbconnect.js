@@ -10,10 +10,10 @@ async function connectMongooseDb() {
             useUnifiedTopology: true,
         });
         isSukses = true;
-        return isSukses;
+        return Promise.resolve(isSukses);
     } catch (err) {
         logger.error(err);
-        return isSukses;
+        return Promise.reject(new Error(err));
     }
 }
 

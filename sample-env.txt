@@ -1,4 +1,6 @@
-# Environment yang dibutuhkan untuk server production
+# Environment yang dibutuhkan untuk server production ataupun debug.
+# Buat file dengan nama .env di folder root project ini. Kemudian isi variabel yang dibutuhkan.
+# Contohnya seperti di bawah ini.
 # Jangan lupa ganti nilainya di server VPS untuk produksi
 API_URL=""
 API_KEY=""

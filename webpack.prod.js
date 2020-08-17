@@ -1,10 +1,10 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const path = require('path');
 // const fs = require('fs');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const nodeExternals = require('webpack-node-externals');
+const pkg = require('./package.json');
 
 const config = require('./config');
 
@@ -30,31 +30,13 @@ module.exports = {
     optimization: {
         minimize: true,
         minimizer: [
-            new UglifyJsPlugin({
-                uglifyOptions: {
-                    output: {
-                        comments: false,
-                    },
-                    mangle: true,
-                    compress: {
-                        sequences: true,
-                        dead_code: true,
-                        conditionals: true,
-                        booleans: true,
-                        unused: true,
-                        if_return: true,
-                        join_vars: true,
-                        drop_console: true,
-                    },
-                },
-                parallel: true,
-                sourceMap: true,
-            }),
             new TerserPlugin({
                 parallel: true,
                 sourceMap: true,
                 extractComments: false,
                 terserOptions: {
+                    ecma: 5,
+                    mangle: true,
                     output: {
                         comments: false,
                     },
@@ -73,10 +55,24 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ['@babel/preset-env'],
+                        presets: [
+                            [
+                                '@babel/preset-env',
+                                {
+                                    targets: {
+                                        node: pkg.engines.node,
+                                    },
+                                },
+                            ],
+                        ],
                         plugins: [
+                            [
+                                '@babel/plugin-transform-runtime',
+                                {
+                                    regenerator: true,
+                                },
+                            ],
                             '@babel/plugin-proposal-object-rest-spread',
-                            '@babel/plugin-transform-runtime',
                         ],
                     },
                 },
@@ -90,7 +86,6 @@ module.exports = {
                 { from: 'package-lock.json', to: './' },
                 { from: 'DEPLOY-README.txt', to: './' },
                 { from: '.env', to: './' },
-                { from: 'config.js', to: './' },
             ],
         }),
     ],
