@@ -1,8 +1,10 @@
 import { Worker } from 'worker_threads';
+import path from 'path';
 
 function runWorkerPrimeService(workerData) {
     return new Promise((resolve, reject) => {
-        const worker = new Worker('./calc-primes.worker.js', { workerData });
+        const pathWorker = path.join(__dirname, 'calc-primes.worker.js');
+        const worker = new Worker(pathWorker, { workerData });
         worker.on('message', resolve);
         worker.on('error', reject);
         worker.on('exit', (code) => {
@@ -15,7 +17,12 @@ function runWorkerPrimeService(workerData) {
 
 function runBubbleSortService(workerData) {
     return new Promise((resolve, reject) => {
-        const worker = new Worker('./buble-sorts.worker.js', { workerData });
+        const pathWorker = path.join(__dirname, 'buble-sorts.worker.js');
+        console.log(pathWorker);
+        const worker = new Worker(pathWorker, {
+            workerData,
+        });
+
         worker.on('message', resolve);
         worker.on('error', reject);
         worker.on('exit', (code) => {

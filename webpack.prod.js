@@ -19,7 +19,23 @@ const config = require('./config');
 
 module.exports = {
     mode: 'production',
-    entry: path.resolve(__dirname, 'src', 'index.js'),
+    // entry: path.resolve(__dirname, 'src', 'index.js'),
+    // Contoh bundle dengan worker thread
+    entry: {
+        'server.bundle': path.resolve(__dirname, 'src', 'index.js'),
+        'buble-sorts.worker': path.resolve(
+            __dirname,
+            'src',
+            'workers',
+            'buble-sorts.worker.js',
+        ),
+        'calc-primes.worker': path.resolve(
+            __dirname,
+            'src',
+            'workers',
+            'calc-primes.worker.js',
+        ),
+    },
     target: 'node',
     node: {
         // Need this when working with express, otherwise the build fails
@@ -44,7 +60,8 @@ module.exports = {
         ],
     },
     output: {
-        filename: 'server.bundle.js',
+        // filename: 'server.bundle.js',
+        filename: '[name].js',
         path: path.resolve(__dirname, 'bundle', `server-${config.version}`),
     },
     module: {
@@ -76,10 +93,6 @@ module.exports = {
                     },
                 },
             },
-            {
-                test: /\.worker\.js$/,
-                use: { loader: 'worker-loader' },
-            },
         ],
     },
     plugins: [
@@ -89,8 +102,6 @@ module.exports = {
                 { from: 'package-lock.json', to: './' },
                 { from: 'DEPLOY-README.txt', to: './' },
                 { from: '.env', to: './' },
-                { from: 'src/workers/buble-sorts.worker.js', to: './' },
-                { from: 'src/workers/calc-primes.worker.js', to: './' },
             ],
         }),
     ],

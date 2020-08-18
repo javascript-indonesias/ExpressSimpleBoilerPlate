@@ -1,5 +1,6 @@
 import express from 'express';
 import { isMainThread } from 'worker_threads';
+import logger from 'loglevel';
 import {
     runWorkerPrimeService,
     runBubbleSortService,
@@ -39,10 +40,11 @@ async function calcPrimeNumber(req, res) {
 }
 
 async function calcBubbleSorted(req, res) {
-    const lengthNumber = Number(req.query.lengtnum);
+    const lengthNumber = Number(req.query.lengthnum);
     const maxNumber = Number(req.query.maxnum);
     const workData = { lengthData: lengthNumber, maxData: maxNumber };
 
+    console.log('Jalan request cek ', isMainThread);
     if (isMainThread) {
         try {
             const result = await runBubbleSortService(workData);
