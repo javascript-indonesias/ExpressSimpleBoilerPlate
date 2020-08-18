@@ -35,6 +35,12 @@ module.exports = {
             'workers',
             'calc-primes.worker.js',
         ),
+        'workerpool-primes.worker': path.resolve(
+            __dirname,
+            'src',
+            'workers',
+            'workerpool-primes.worker.js',
+        ),
     },
     target: 'node',
     node: {

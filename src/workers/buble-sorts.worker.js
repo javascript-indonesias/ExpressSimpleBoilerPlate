@@ -4,7 +4,7 @@
 // Sehingga aplikasi tetap responsif ketika proses kalkulasi
 // komputasi berat di jalankan
 // Contoh komputasi berat dengan Bubble sort
-const { parentPort, workerData } = require('worker_threads');
+import { parentPort, workerData } from 'worker_threads';
 
 let rawArray = [];
 let arrayResult = [];
