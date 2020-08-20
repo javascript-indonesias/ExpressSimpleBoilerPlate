@@ -1,6 +1,8 @@
 import rateLimit from 'express-rate-limit';
 import slowDown from 'express-slow-down';
 
+// Tips coding garden with CJ
+// https://www.youtube.com/watch?v=nCWE6eonL7k
 // Batasi 10 request per 30 detik
 const rateLimiter = rateLimit({
     windowMs: 30 * 1000,

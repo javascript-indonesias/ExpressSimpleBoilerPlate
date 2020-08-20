@@ -2,6 +2,7 @@ import express from 'express';
 // any other routes imports would go here
 import getMathRoutes from './math';
 import getBlogRoutes from './blog-api';
+import getCovidRoutes from './covid-route-sample';
 
 function getRoutes() {
     // create a router for all the routes of our app
@@ -12,4 +13,10 @@ function getRoutes() {
     return router;
 }
 
-export { getRoutes };
+function getCovidRouter() {
+    const router = express.Router();
+    router.use('/data', getCovidRoutes());
+    return router;
+}
+
+export { getRoutes, getCovidRouter };

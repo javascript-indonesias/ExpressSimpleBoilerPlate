@@ -5,23 +5,32 @@ import helmet from 'helmet';
 import 'express-async-errors';
 import logger from 'loglevel';
 // all the routes for my app are retrieved from the src/routes/index.js module
-import { getRoutes } from './routes';
+import { getRoutes, getCovidRouter } from './routes';
 import { rateLimiter, speedLimiter } from './utils/options-value';
+import { corsAllRequest, corsRequest } from './utils/cors-options';
+import { mode } from '../config';
 
 // here's our generic error handler for situations where we didn't handle
 // errors properly
-function errorMiddleware(error, req, res, next) {
+function notFound(req, res, next) {
+    res.status(404);
+    const error = new Error(`🔍 - Not Found - ${req.originalUrl}`);
+    next(error);
+}
+
+function errorMiddleware(error, _req, res) {
+    const statusCode = res.statusCode !== 200 ? res.statusCode : 500;
+
     if (res.headersSent) {
-        next(error);
+        // next(error);
+        res.json({ message: error.message });
     } else {
         logger.error(error);
-        res.status(500);
+        res.status(statusCode);
         res.json({
             message: error.message,
             // we only add a `stack` property in non-production environments
-            ...(process.env.NODE_ENV === 'production'
-                ? null
-                : { stack: error.stack }),
+            ...(mode === 'production' ? null : { stack: error.stack }),
         });
     }
 }
@@ -61,6 +70,8 @@ function setupCloseOnExit(server) {
 
 function startServer({ port = process.env.PORT } = {}) {
     const app = express();
+    // Enable if your Express JS behind Reverse Proxy
+    app.set('trust proxy', 1);
     // Add helmet js for basic hardening security
     app.use(helmet());
     // Debugging purpose with morgan
@@ -69,8 +80,12 @@ function startServer({ port = process.env.PORT } = {}) {
     app.use(express.urlencoded({ extended: true }));
     // I mount my entire app to the /api route (or you could just do "/" if you want)
     // Use rate limiter and speed limiter for prevent brute force and spamming attacks
-    app.use('/api/v1', rateLimiter, speedLimiter, getRoutes());
+    app.options('*', corsAllRequest);
+    app.use('/api/v1', rateLimiter, speedLimiter, corsRequest, getRoutes());
+    app.use('/covid', rateLimiter, speedLimiter, corsRequest, getCovidRouter());
+
     // add the generic error handler just in case errors are missed by middleware
+    app.use(notFound);
     app.use(errorMiddleware);
     // I prefer dealing with promises. It makes testing easier, among other things.
     // So this block of code allows me to start the express app and resolve the

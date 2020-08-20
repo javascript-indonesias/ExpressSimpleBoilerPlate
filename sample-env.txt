@@ -7,4 +7,5 @@ API_KEY=""
 PORT=3200
 VERSIONAPP="v100"
 MONGODBURI=""
-MODEDEV="development"
+NODE_ENV="development"
+

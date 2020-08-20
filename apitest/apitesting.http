@@ -1,0 +1,24 @@
+### TEST REST API
+### Menggunakan Ekstensi VS Code REST Client
+
+### Data Covid
+GET http://localhost:3200/covid/data/pemerintah
+
+###
+GET http://localhost:3200/covid/data/matdroid
+
+### MATH CALC
+
+GET http://localhost:3200/api/v1/math/add?a=1&c=3
+
+###
+
+GET http://localhost:3200/api/v1/math/prime-pool?startrange=1&ranges=20
+
+###
+
+GET http://localhost:3200/api/v1/math/calc-prime?startrange=1&ranges=200
+
+###
+
+GET http://localhost:3200/api/v1/math/bubbles?lengthnum=5&maxnum=10
