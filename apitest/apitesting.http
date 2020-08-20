@@ -22,3 +22,28 @@ GET http://localhost:3200/api/v1/math/calc-prime?startrange=1&ranges=200
 ###
 
 GET http://localhost:3200/api/v1/math/bubbles?lengthnum=5&maxnum=10
+
+### BLOG API 
+
+GET http://localhost:3200/api/v1/blog/blog-list
+
+###
+
+GET http://localhost:3200/api/v1/blog/blogs/5f3cd47b7113e51f703ae7bc
+
+###
+
+POST http://localhost:3200/api/v1/blog/create-blog
+Content-Type: application/x-www-form-urlencoded
+
+title=Blog Sore Hari&snippet=Snippet singkat blog sore hari&text=Isi panjang dari blog saja
+
+# {
+#     "title": "Judul blog",
+#     "snippet": "Snippet singkat blog",
+#     "text": "Isi panjang dari blog"
+# }
+
+###
+DELETE  http://localhost:3200/api/v1/blog/blogs/5f3e4b0d7968394344eb9493
+
