@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 import logger from 'loglevel';
 import { mongouri } from '../../config';
 
+// Daftar koneksi ke database yang dipakai
 async function connectMongooseDb() {
     let isSukses = false;
     try {

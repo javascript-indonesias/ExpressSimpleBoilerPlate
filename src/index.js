@@ -29,6 +29,7 @@ function startServerDebug() {
         .catch((err) => logger.error(err));
 }
 
+// Jalankan koneksi ke MongoDb terlebih dahulu sebelum start server
 connectMongoDb()
     .then((isConnect) => {
         if (isConnect) {

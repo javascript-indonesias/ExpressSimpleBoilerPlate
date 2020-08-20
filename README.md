@@ -1,8 +1,18 @@
-# Node JS ES2015 Express Boilerplate
+# Node JS Express Boilerplate ES2015++
 
-Kerangka aplikasi (boilerplate) untuk aplikasi backend REST API berbasis Node JS dengan framework Express JS, Babel, dan ES2015. Dibuat berdasarkan referensi [Kent C. Dodds Blogs](https://kentcdodds.com/blog/how-i-structure-express-apps) yang berjudul **_How I structure Express apps_**. Kerangka dengan tambahan Linter ESLint dan Prettier Formatter, bundle aplikasi dengan melakukan Webpack, dan contoh penggunaan Worker Thread untuk proses data yang berat di thread terpisah Node JS.
+Kerangka aplikasi (boilerplate) untuk aplikasi backend REST API berbasis Node JS dengan framework Express JS, Babel, dan ES2015. Dibuat berdasarkan referensi [Kent C. Dodds Blogs](https://kentcdodds.com/blog/how-i-structure-express-apps) yang berjudul **_How I structure Express apps_**. Kerangka dengan tambahan Linter ESLint dan Prettier Formatter, bundle aplikasi dengan melakukan Webpack, CRUD sederhana dengan MongoDB, dan contoh penggunaan Worker Thread untuk proses data yang berat di thread terpisah Node JS.
 
 Github sumber dari Kent C Dodds adalah disini [https://github.com/kentcdodds/express-app-example](https://github.com/kentcdodds/express-app-example).
+
+## Instalasi
+
+Silahkan lakukan clone project ini dengan cara mengunduh dari menu Code > Zip di halaman Github ini. Atau lakukan dengan melakukan Git Clone project dengan perintah :
+
+```sh
+git clone -b master -o github --depth 1 --single-branch https://github.com/javascript-indonesias/ExpressSimpleBoilerPlate.git
+```
+
+Setelah melakukan clone project atau download project kerangka ini, jalankan perintah ```npm install``` di dalam folder project tersebut.
 
 ## Penggunaan Development dan Debug
 
