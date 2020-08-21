@@ -1,8 +1,10 @@
 # Node JS Express Boilerplate ES2015++
 
-Kerangka aplikasi (boilerplate) untuk aplikasi backend REST API berbasis Node JS dengan framework Express JS, Babel, dan ES2015. Dibuat berdasarkan referensi [Kent C. Dodds Blogs](https://kentcdodds.com/blog/how-i-structure-express-apps) yang berjudul **_How I structure Express apps_**. Kerangka dengan tambahan Linter ESLint dan Prettier Formatter, bundle aplikasi dengan melakukan Webpack, CRUD sederhana dengan MongoDB, Winston Logger, mock data dengan Faker JS, dan contoh penggunaan Worker Thread untuk proses komputasi data yang berat di thread terpisah Node JS.
+Kerangka aplikasi (boilerplate) untuk aplikasi backend REST API berbasis Node JS dengan framework Express JS, Babel, dan ES2015. Dibuat berdasarkan referensi [Kent C. Dodds Blogs](https://kentcdodds.com/blog/how-i-structure-express-apps) yang berjudul **_How I structure Express apps_** dan [Coding Garden with CJ Node JS](https://www.youtube.com/watch?v=nCWE6eonL7k). Kerangka dengan tambahan Linter ESLint dan Prettier Formatter, bundle aplikasi dengan melakukan Webpack, CRUD sederhana dengan MongoDB, Winston Logger, mock data dengan Faker JS, dan contoh penggunaan Worker Thread untuk proses komputasi data yang berat di thread terpisah Node JS.
 
 Github sumber dari Kent C Dodds adalah disini [https://github.com/kentcdodds/express-app-example](https://github.com/kentcdodds/express-app-example).
+
+Gthub sumber dari Coding Garden with CJ dapat dilihat disini [https://github.com/CodingGarden/mars-weather-api](https://github.com/CodingGarden/mars-weather-api)
 
 ## Instalasi
 
@@ -60,4 +62,4 @@ Pastikan plugin ESLint dan Prettier telah terpasang di VS Code. Kemudian tambahk
 }
 ```
 
-Dengan penambahan baris konfigurasi VS Code di atas, VS Code akan melakukan formatting kode JavaScript ketika melakukan penyimpanan. Dan jangan lupa, pemrograman dengan VS Code tidak lengkap jika tidak menggunakan [Mayukai Theme](https://marketplace.visualstudio.com/items?itemName=GulajavaMinistudio.mayukaithemevsc) dan [Iosevka Mayukai Font](https://github.com/Iosevka-Mayukai/Iosevka-Mayukai). Selamat mencoba.
+Dengan penambahan baris konfigurasi VS Code di atas, VS Code akan melakukan formatting kode JavaScript ketika melakukan penyimpanan. Dan jangan lupa, pemrograman dengan VS Code semakin seru dengan  menggunakan [Mayukai Theme](https://marketplace.visualstudio.com/items?itemName=GulajavaMinistudio.mayukaithemevsc) dan [Iosevka Mayukai Font](https://github.com/Iosevka-Mayukai/Iosevka-Mayukai). Selamat mencoba.
