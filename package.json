@@ -8,11 +8,11 @@
   },
   "scripts": {
     "build-babel": "babel --delete-dir-on-start --out-dir dist --copy-files --ignore \"**/__tests__/**,**/__mocks__/**\" --no-copy-ignored src",
-    "start-babel": "nodemon ./dist/index.js",
-    "debug-babel": "nodemon ./dev.js",
+    "start-babel": "npm run build-babel && nodemon ./dist/index.js",
     "removedist": "rm -rf ./dist",
     "removebundle": "rm -rf ./bundle",
-    "build-prod": "webpack --config webpack.prod.js",
+    "removelog": "rm -rf ./winston-logs/logs/",
+    "build-prod": "npm run removelog && webpack --config webpack.prod.js",
     "debug-prod": "cd ./bundle/server-v100 && npm install && nodemon server.bundle.js"
   },
   "author": "GulajavaMinistudio",
@@ -20,20 +20,25 @@
   "dependencies": {
     "@babel/register": "^7.10.5",
     "@babel/runtime": "^7.11.2",
+    "app-root-path": "^3.0.0",
     "axios": "^0.19.2",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
+    "date-fns": "^2.15.0",
+    "date-fns-tz": "^1.0.10",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-async-errors": "^3.1.1",
     "express-rate-limit": "^5.1.3",
     "express-slow-down": "^1.3.1",
+    "faker": "^4.1.0",
     "helmet": "^4.1.0",
     "http-proxy-middleware": "^1.0.5",
     "loglevel": "^1.6.8",
     "mongoose": "^5.10.0",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "winston": "^3.3.3"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.5",

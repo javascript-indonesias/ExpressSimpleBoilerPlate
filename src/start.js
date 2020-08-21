@@ -3,9 +3,9 @@ import morgan from 'morgan';
 import helmet from 'helmet';
 // this is all it takes to enable async/await for express middleware
 import 'express-async-errors';
-import logger from 'loglevel';
+import logger from './utils/config-winston';
 // all the routes for my app are retrieved from the src/routes/index.js module
-import { getRoutes, getCovidRouter } from './routes';
+import { getRoutes, getCovidRouter, getMockDataRouter } from './routes';
 import { rateLimiter, speedLimiter } from './utils/options-value';
 import { corsAllRequest, corsRequest } from './utils/cors-options';
 import { mode } from '../config';
@@ -75,7 +75,7 @@ function startServer({ port = process.env.PORT } = {}) {
     // Add helmet js for basic hardening security
     app.use(helmet());
     // Debugging purpose with morgan
-    app.use(morgan('dev'));
+    app.use(morgan('combined', { stream: logger.stream }));
     // Middleware for http body
     app.use(express.urlencoded({ extended: true }));
     // I mount my entire app to the /api route (or you could just do "/" if you want)
@@ -83,6 +83,7 @@ function startServer({ port = process.env.PORT } = {}) {
     app.options('*', corsAllRequest);
     app.use('/api/v1', rateLimiter, speedLimiter, corsRequest, getRoutes());
     app.use('/covid', rateLimiter, speedLimiter, corsRequest, getCovidRouter());
+    app.use('/', rateLimiter, speedLimiter, corsRequest, getMockDataRouter());
 
     // add the generic error handler just in case errors are missed by middleware
     app.use(notFound);

@@ -1,6 +1,6 @@
 # Node JS Express Boilerplate ES2015++
 
-Kerangka aplikasi (boilerplate) untuk aplikasi backend REST API berbasis Node JS dengan framework Express JS, Babel, dan ES2015. Dibuat berdasarkan referensi [Kent C. Dodds Blogs](https://kentcdodds.com/blog/how-i-structure-express-apps) yang berjudul **_How I structure Express apps_**. Kerangka dengan tambahan Linter ESLint dan Prettier Formatter, bundle aplikasi dengan melakukan Webpack, CRUD sederhana dengan MongoDB, dan contoh penggunaan Worker Thread untuk proses data yang berat di thread terpisah Node JS.
+Kerangka aplikasi (boilerplate) untuk aplikasi backend REST API berbasis Node JS dengan framework Express JS, Babel, dan ES2015. Dibuat berdasarkan referensi [Kent C. Dodds Blogs](https://kentcdodds.com/blog/how-i-structure-express-apps) yang berjudul **_How I structure Express apps_**. Kerangka dengan tambahan Linter ESLint dan Prettier Formatter, bundle aplikasi dengan melakukan Webpack, CRUD sederhana dengan MongoDB, Winston Logger, mock data dengan Faker JS, dan contoh penggunaan Worker Thread untuk proses komputasi data yang berat di thread terpisah Node JS.
 
 Github sumber dari Kent C Dodds adalah disini [https://github.com/kentcdodds/express-app-example](https://github.com/kentcdodds/express-app-example).
 
@@ -19,7 +19,7 @@ Setelah melakukan clone project atau download project kerangka ini, jalankan per
 Pastikan di komputer anda telah terpasang Node JS versi 12.x atau yang lebih baru. Clone atau download project ini dengan menggunakan Git ke komputer lokal.
 
 - Kemudian jalankan Perintah `npm install` .
-- Untuk menjalankan proses debug atau development, jalankan perintah `npm run debug-babel`. Di dalam folder `/src/index.js` terdapat fungsi melakukan Clustering proses Node JS. Non aktifkan atau berikan comment // pada fungsi clustering tersebut, jika proses Clustering membuat perangkat dan proses development terasa berat, atau tidak dibutuhkan.
+- Untuk menjalankan proses debug atau development, jalankan perintah `npm run start-babel`. Di dalam folder `/src/index.js` terdapat fungsi melakukan Clustering proses Node JS. Non aktifkan atau berikan comment // pada fungsi clustering tersebut, jika proses Clustering membuat perangkat dan proses development terasa berat, atau tidak dibutuhkan ketika proses development.
 
 ## Penggunaan Production
 
@@ -60,4 +60,4 @@ Pastikan plugin ESLint dan Prettier telah terpasang di VS Code. Kemudian tambahk
 }
 ```
 
-Dengan penambahan baris konfigurasi VS Code di atas, VS Code akan melakukan formatting kode JavaScript ketika melakukan penyimpanan.
+Dengan penambahan baris konfigurasi VS Code di atas, VS Code akan melakukan formatting kode JavaScript ketika melakukan penyimpanan. Dan jangan lupa, pemrograman dengan VS Code tidak lengkap jika tidak menggunakan [Mayukai Theme](https://marketplace.visualstudio.com/items?itemName=GulajavaMinistudio.mayukaithemevsc) dan [Iosevka Mayukai Font](https://github.com/Iosevka-Mayukai/Iosevka-Mayukai). Selamat mencoba.

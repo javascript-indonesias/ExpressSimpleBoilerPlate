@@ -1,7 +1,7 @@
 import { EventEmitter } from 'events';
 import path from 'path';
 import { Worker } from 'worker_threads';
-import logger from 'loglevel';
+import logger from '../utils/config-winston';
 
 import WorkerPoolTaskInfo from './workerpool-taskinfo';
 
@@ -68,7 +68,7 @@ export default class WorkerPool extends EventEmitter {
     close() {
         for (let i = 0; i < this.workers.length; i += 1) {
             this.workers[i].terminate();
-            logger.log('Worker closed in pool', i);
+            logger.info(`Worker closed in pool ${i}`);
         }
     }
 }

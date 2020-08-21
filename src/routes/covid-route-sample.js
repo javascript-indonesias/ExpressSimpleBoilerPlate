@@ -1,7 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import axios from 'axios';
-import logger from 'loglevel';
+import logger from '../utils/config-winston';
 
 // create application/json parser
 const jsonParser = bodyParser.json();

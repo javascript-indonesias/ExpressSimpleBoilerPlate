@@ -108,6 +108,7 @@ module.exports = {
                 { from: 'package-lock.json', to: './' },
                 { from: 'DEPLOY-README.txt', to: './' },
                 { from: '.env', to: './' },
+                { from: 'winston-logs', to: './winston-logs' },
             ],
         }),
     ],

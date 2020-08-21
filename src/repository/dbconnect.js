@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import logger from 'loglevel';
+import logger from '../utils/config-winston';
 import { mongouri } from '../../config';
 
 // Daftar koneksi ke database yang dipakai

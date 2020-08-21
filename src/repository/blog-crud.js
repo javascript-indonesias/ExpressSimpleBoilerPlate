@@ -1,5 +1,5 @@
 // Fungsi crud ke database
-import logger from 'loglevel';
+import logger from '../utils/config-winston';
 import Blog from './model/blog-item';
 
 function getAllBlogs() {

@@ -1,7 +1,7 @@
 import { Worker } from 'worker_threads';
 import path from 'path';
 import os from 'os';
-import logger from 'loglevel';
+import logger from '../utils/config-winston';
 import WorkerPool from './workerpool-primes';
 
 import config from '../../config';
@@ -57,7 +57,8 @@ function runWorkerPoolPrimeNumber(workerData) {
     for (let i = 0; i < 10; i += 1) {
         const promise = new Promise((resolve, reject) => {
             workerPools.runTask(workerData, (errors, results) => {
-                logger.log(i, errors, results);
+                const stringDebug = `${i} ${errors} ${results}`;
+                logger.info(stringDebug);
                 if (errors) {
                     reject(errors);
                 } else {
@@ -71,7 +72,7 @@ function runWorkerPoolPrimeNumber(workerData) {
     return Promise.allSettled(arrayPromise)
         .then((results) => {
             workerPools.close();
-            results.forEach((result) => logger.log(result.status));
+            results.forEach((result) => logger.info(result.status));
             return Promise.resolve(results);
         })
         .catch((error) => {

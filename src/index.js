@@ -1,13 +1,12 @@
-import logger from 'loglevel';
 import cluster from 'cluster';
 import os from 'os';
+import logger from './utils/config-winston';
 import startServer from './start';
 import connectMongoDb from './repository/dbconnect';
 
 import config from '../config';
 
 const numCPUS = os.cpus().length;
-logger.setLevel('info');
 
 function startServerCluster() {
     // Aktifkan jika mode production

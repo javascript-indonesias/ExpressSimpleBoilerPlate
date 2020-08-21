@@ -23,7 +23,7 @@ GET http://localhost:3200/api/v1/math/calc-prime?startrange=1&ranges=200
 
 GET http://localhost:3200/api/v1/math/bubbles?lengthnum=5&maxnum=10
 
-### BLOG API 
+### BLOG API
 
 GET http://localhost:3200/api/v1/blog/blog-list
 
@@ -47,3 +47,6 @@ title=Blog Sore Hari&snippet=Snippet singkat blog sore hari&text=Isi panjang dar
 ###
 DELETE  http://localhost:3200/api/v1/blog/blogs/5f3e4b0d7968394344eb9493
 
+### MOCK DATA
+
+GET http://localhost:3200/mockdata
