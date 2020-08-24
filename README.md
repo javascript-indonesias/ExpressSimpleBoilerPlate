@@ -29,7 +29,7 @@ Dalam pembuatan mode production, terdapat dua pilihan. Pilihan pertama yaitu mel
 
  **_Production dengan Babel Compiler_**
 
-- Untuk proses **_Production dengan Babel Compiler_** , jalankan perintah `npm run build-babel` . Hasil dari build akan menghasilkan folder ``/dist``` .
+- Untuk proses **_Production dengan Babel Compiler_** , jalankan perintah `npm run build-babel` . Hasil dari build akan menghasilkan folder ```/dist``` .
 
 - Untuk menguji hasil build di folder `/dist` , jalankan perintah `npm run start-babel` .
 

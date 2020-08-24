@@ -67,6 +67,6 @@
     "webpack-dev-server": "^3.11.0",
     "webpack-merge": "^5.1.2",
     "webpack-node-externals": "^2.5.1",
-    "worker-loader": "^3.0.1"
+    "worker-loader": "^3.0.2"
   }
 }
