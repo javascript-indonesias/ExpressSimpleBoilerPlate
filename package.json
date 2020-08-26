@@ -60,13 +60,13 @@
     "eslint-plugin-react": "^7.20.6",
     "eslint-plugin-react-hooks": "^4.1.0",
     "file-loader": "^6.0.0",
-    "prettier": "^2.0.5",
+    "prettier": "^2.1.1",
     "terser-webpack-plugin": "^4.1.0",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0",
     "webpack-merge": "^5.1.2",
-    "webpack-node-externals": "^2.5.1",
+    "webpack-node-externals": "^2.5.2",
     "worker-loader": "^3.0.2"
   }
 }
