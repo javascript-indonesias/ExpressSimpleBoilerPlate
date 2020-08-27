@@ -34,8 +34,8 @@
     "faker": "^4.1.0",
     "helmet": "^4.1.0",
     "http-proxy-middleware": "^1.0.5",
-    "loglevel": "^1.6.8",
-    "mongoose": "^5.10.0",
+    "loglevel": "^1.7.0",
+    "mongoose": "^5.10.1",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.4",
     "winston": "^3.3.3"
