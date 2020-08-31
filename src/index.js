@@ -28,26 +28,45 @@ function startServerDebug() {
         .catch((err) => logger.error(err));
 }
 
-// Jalankan koneksi ke MongoDb terlebih dahulu sebelum start server
-connectMongoDb()
-    .then((isConnect) => {
-        if (isConnect) {
-            logger.info('MongoDb connected');
-            if (config.mode === 'production') {
-                // Aktifkan jika ingin mode production
-                startServerCluster();
+// Jika tidak menggunakan MongoDb, bisa jalankan langsung saja
+function runServerNodeJS() {
+    logger.info('Start server Express');
+    if (config.mode === 'production') {
+        // Aktifkan jika ingin mode production
+        startServerCluster();
+    } else {
+        // Aktifkan jika mode development
+        startServerDebug();
+    }
+}
+
+// Jika menggunakan MongoDb atau sejenisnya, dapat menggunakan fungsi ini.
+function runServerNodeJSMongoDb() {
+    // Jalankan koneksi ke MongoDb terlebih dahulu sebelum start server
+    connectMongoDb()
+        .then((isConnect) => {
+            if (isConnect) {
+                logger.info('MongoDb connected');
+                if (config.mode === 'production') {
+                    // Aktifkan jika ingin mode production
+                    startServerCluster();
+                } else {
+                    // Aktifkan jika mode development
+                    startServerDebug();
+                }
             } else {
-                // Aktifkan jika mode development
-                startServerDebug();
+                logger.info('Mongodb not connected');
             }
-        } else {
+        })
+        .catch((error) => {
+            logger.error(error);
             logger.info('Mongodb not connected');
-        }
-    })
-    .catch((error) => {
-        logger.error(error);
-        logger.info('Mongodb not connected');
-    });
+        });
+}
+
+// Jalankan server sesuai kebutuhan
+runServerNodeJS();
+// runServerNodeJSMongoDb();
 
 // Untuk menguji API akses dengan Postman atau Insomnia dengan
 // Contoh URL API berikut

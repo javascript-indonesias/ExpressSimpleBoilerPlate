@@ -8,4 +8,5 @@ PORT=3200
 VERSIONAPP="v100"
 MONGODBURI=""
 NODE_ENV="development"
+# NODE_ENV="production"
 
