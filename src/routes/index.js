@@ -4,6 +4,7 @@ import getMathRoutes from './math';
 import getBlogRoutes from './blog-api';
 import getCovidRoutes from './covid-route-sample';
 import getMockRoutes from './mock-data';
+import getValidasiTesRoutes from './validation-testing';
 
 function getRoutes() {
     // create a router for all the routes of our app
@@ -26,4 +27,10 @@ function getMockDataRouter() {
     return router;
 }
 
-export { getRoutes, getCovidRouter, getMockDataRouter };
+function getValidationTesRouter() {
+    const router = express.Router();
+    router.use('/', getValidasiTesRoutes());
+    return router;
+}
+
+export { getRoutes, getCovidRouter, getMockDataRouter, getValidationTesRouter };

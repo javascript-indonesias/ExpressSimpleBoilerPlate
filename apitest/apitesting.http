@@ -50,3 +50,6 @@ DELETE  http://localhost:3200/api/v1/blog/blogs/5f3e4b0d7968394344eb9493
 ### MOCK DATA
 
 GET http://localhost:3200/mockdata
+
+### TES KIRIM VALIDASI DENGAN EXPRESS VALIDATOR
+GET http://localhost:3200/tesvalidasi?paramA=7&stringB=<script>console.log('hello world')<script>&paramC=

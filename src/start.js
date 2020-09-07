@@ -5,7 +5,12 @@ import helmet from 'helmet';
 import 'express-async-errors';
 import logger from './utils/config-winston';
 // all the routes for my app are retrieved from the src/routes/index.js module
-import { getRoutes, getCovidRouter, getMockDataRouter } from './routes';
+import {
+    getRoutes,
+    getCovidRouter,
+    getMockDataRouter,
+    getValidationTesRouter,
+} from './routes';
 import { rateLimiter, speedLimiter } from './utils/options-value';
 import { corsAllRequest, corsRequest } from './utils/cors-options';
 import { mode } from '../config';
@@ -84,6 +89,13 @@ function startServer({ port = process.env.PORT } = {}) {
     app.use('/api/v1', rateLimiter, speedLimiter, corsRequest, getRoutes());
     app.use('/covid', rateLimiter, speedLimiter, corsRequest, getCovidRouter());
     app.use('/', rateLimiter, speedLimiter, corsRequest, getMockDataRouter());
+    app.use(
+        '/',
+        rateLimiter,
+        speedLimiter,
+        corsRequest,
+        getValidationTesRouter(),
+    );
 
     // add the generic error handler just in case errors are missed by middleware
     app.use(notFound);
