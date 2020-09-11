@@ -13,7 +13,8 @@
     "removebundle": "rm -rf ./bundle",
     "removelog": "rm -rf ./winston-logs/logs/",
     "build-prod": "npm run removelog && webpack --config webpack.prod.js",
-    "debug-prod": "cd ./bundle/server-v100 && npm install && nodemon server.bundle.js"
+    "debug-prod": "cd ./bundle/server-v100 && npm install && nodemon server.bundle.js",
+    "live-debug": "nodemon dev.js"
   },
   "author": "GulajavaMinistudio",
   "license": "MIT",
