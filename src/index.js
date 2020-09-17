@@ -14,6 +14,15 @@ function startServerCluster() {
         for (let i = 0; i < numCPUS; i += 1) {
             cluster.fork();
         }
+
+        cluster.on('exit', (worker, code) => {
+            // Cluster mengalami crash karena error
+            // Jalankan fallback untuk restart ulang cluster
+            if (code !== 0 && !worker.exitedAfterDisconnect) {
+                logger.warn('Cluster crashed, starting new cluster');
+                cluster.fork();
+            }
+        });
     } else {
         startServer({ port: config.port })
             .then()
