@@ -4,7 +4,7 @@
   "description": "Simple boilerplate for Express JS Node JS project.",
   "main": "index.js",
   "engines": {
-    "node": "12.18.3"
+    "node": "14.15.1"
   },
   "scripts": {
     "build-babel": "babel --delete-dir-on-start --out-dir dist --copy-files --ignore \"**/__tests__/**,**/__mocks__/**\" --no-copy-ignored src",
