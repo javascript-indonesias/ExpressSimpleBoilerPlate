@@ -16,6 +16,7 @@ export default class WorkerPool extends EventEmitter {
         this.numThreads = numThreads;
         this.workers = [];
         this.freeWorkers = [];
+        this.workerPathName = workerPathName;
 
         for (let i = 0; i < numThreads; i += 1) {
             this.addNewWorker(workerPathName);
@@ -45,7 +46,7 @@ export default class WorkerPool extends EventEmitter {
             // Remove the worker from the list and start a new Worker to replace the
             // current one.
             this.workers.splice(this.workers.indexOf(worker), 1);
-            this.addNewWorker();
+            this.addNewWorker(this.workerPathName);
         });
 
         this.workers.push(worker);
