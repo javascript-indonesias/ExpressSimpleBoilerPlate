@@ -54,11 +54,10 @@ module.exports = {
         minimizer: [
             new TerserPlugin({
                 parallel: true,
-                sourceMap: true,
                 extractComments: false,
                 terserOptions: {
                     mangle: true,
-                    output: {
+                    format: {
                         comments: false,
                     },
                 },
