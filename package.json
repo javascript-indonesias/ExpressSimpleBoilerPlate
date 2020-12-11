@@ -50,7 +50,7 @@
     "@babel/plugin-transform-runtime": "^7.12.10",
     "@babel/preset-env": "^7.12.10",
     "babel-loader": "^8.2.2",
-    "copy-webpack-plugin": "^6.4.0",
+    "copy-webpack-plugin": "^7.0.0",
     "eslint": "^7.15.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-node": "^4.1.0",
