@@ -108,11 +108,10 @@ function startServer({ port = process.env.PORT } = {}) {
             logger.info(`Listening on port ${server.address().port}`);
             // this block of code turns `server.close` into a promise API
             const originalClose = server.close.bind(server);
-            server.close = () => {
-                return new Promise((resolveClose) => {
+            server.close = () =>
+                new Promise((resolveClose) => {
                     originalClose(resolveClose);
                 });
-            };
             // this ensures that we properly close the server when the program exists
             setupCloseOnExit(server);
             // resolve the whole promise with the express server
